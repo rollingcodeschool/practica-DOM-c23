@@ -79,9 +79,113 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <footer class=" text-center bg-dark-subtle py-4">
-        <p>&copy; Todos los derechos reservados</p>
+    <main class="container my-4">
+      <section>
+        <h1 class="text-center">Introducción al DOM de Javascript</h1>
+        <p class="lead">
+          El DOM es una representación del HTML como objetos en JavaScript. Nos
+          permite modificar elementos en la página mientras se ejecuta.
+        </p>
+        <article>
+          <h2>🔍 Selección de elementos</h2>
+          <p>
+            Métodos del objeto document, para seleccionar elementos del html
+            usando javascript
+          </p>
+          <ul>
+            <li><code>getElementById('id')</code> → Selecciona por ID.</li>
+            <li>
+              <code>getElementsByClassName('clase')</code> → Selecciona por
+              clase.
+            </li>
+            <li>
+              <code>getElementsByTagName('tag')</code> → Devuelve por tipo de
+              etiqueta.
+            </li>
+            <li>
+              <code>querySelector(selector)</code> Devuelve por tipo de
+              etiqueta. → Devuelve el primer elemento que coincide.
+            </li>
+            <li>
+              <code>querySelectorAll('selector')</code> → Devuelve todos los que
+              coinciden.
+            </li>
+          </ul>
+          <h2>✏️ Modificar contenido:</h2>
+          <ul>
+            <li><code>textContent</code> agrega texto plano (más seguro)</li>
+            <li>
+              <code>innerHTML</code> interpreta HTML (⚠️ vulnerable a XSS si no
+              se controla)
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h2 id="titulo-modificable" class="display-4">
+            Ejemplo de uso del DOM
+          </h2>
+          <button class="btn btn-primary" onclick="cambiarTitulo()">
+            Cambiar titulo 🎨
+          </button>
+        </article>
+        <article class="my-4">
+          <h2>🎨 Manipular clases con classList:</h2>
+          <p>
+            classList es una propiedad de los elementos DOM que permite trabajar
+            fácilmente con las clases CSS. Devuelve un objeto con métodos
+            útiles.
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Método</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>element.classList.add("clase")</code></td>
+                  <td>🟢 Añade una clase si no está presente.</td>
+                </tr>
+                <tr>
+                  <td><code>element.classList.remove("clase")</code></td>
+                  <td>🔴 Elimina una clase si está presente.</td>
+                </tr>
+                <tr>
+                  <td><code>element.classList.toggle("clase")</code></td>
+                  <td>
+                    🔁 Alterna una clase: si está, la quita; si no está, la
+                    agrega.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>element.classList.contains("clase")</code></td>
+                  <td>🔍 Devuelve true si el elemento tiene la clase.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>element.classList.replace("vieja", "nueva")</code>
+                  </td>
+                  <td>🔄 Reemplaza una clase existente por otra.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+      <section>
+        <h2 class="text-center">Practica DOM</h2>
+        <article class="border p-4 rounded-2">
+          <h3>Este titulo cambiara</h3>
+          <button class="btn btn-primary" onclick="cambiarTitulo()">
+            Cambiar
+          </button>
+        </article>
+      </section>
+    </main>
+    <footer class="text-center bg-dark-subtle py-4">
+      <p>&copy; Todos los derechos reservados</p>
     </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
