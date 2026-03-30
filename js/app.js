@@ -25,8 +25,18 @@ const ocultarTexto = () => {
   }
 };
 
+const eliminarParrafo = ()=>{
+    const parrafo = document.getElementById('parrafo-eliminar');
+    parrafo.remove()
+    btnEliminar[1].classList.add('disabled')
+    // btnEliminar[1].className = 'btn btn-danger disabled'
+}
+
 const btnOcultar = document.querySelector(".btn-danger");
+const btnEliminar = document.querySelectorAll(".btn-danger");
+
 //agregar un manejador de eventos
 btnOcultar.addEventListener("click", ocultarTexto);
 // si la funcion tiene parametros guardarla en un callback
 // btnOcultar.addEventListener('click', ()=> ocultarTexto('hola mundo'))
+btnEliminar[1].addEventListener('click', eliminarParrafo)
