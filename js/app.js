@@ -9,3 +9,17 @@ function cambiarTitulo(){
     titulo.classList.add('text-primary')
     titulo2[2].textContent = 'modificado con la funcion cambiartitulo()'
 }
+
+const ocultarTexto = ()=>{
+    console.log('desde la funcion ocultar texto')
+    const parrafo = document.querySelector('#parrafo-ocultar')
+    parrafo.classList.toggle('d-none')
+    
+}
+
+
+const btnOcultar = document.querySelector('.btn-danger')
+//agregar un manejador de eventos
+btnOcultar.addEventListener('click', ocultarTexto)
+// si la funcion tiene parametros guardarla en un callback
+// btnOcultar.addEventListener('click', ()=> ocultarTexto('hola mundo'))
