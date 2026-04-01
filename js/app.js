@@ -37,20 +37,29 @@ function crearTarea(e) {
   // acceder al valor del input del formulario
   const tarea = document.getElementById("tarea").value;
   //? opcion 1
-   const ul = document.querySelector(".list-group"); // nodo padre
+  const ul = document.querySelector(".list-group"); // nodo padre
   // const item = document.createElement("li"); // <li> </li> // nodo hijo
   // item.classList.add("list-group-item");
   // item.textContent = tarea;
   // ul.appendChild(item);
   //?opcion 2
-  ul.innerHTML += `<li class="list-group-item">${tarea}</li>`
+  ul.innerHTML += `<li class="list-group-item">${tarea}</li>`;
   //resetear el formulario
   formTarea.reset();
+}
+// setTimeout: ejecutar una funcion pasado cierto tiempo en ms
+// setInterval: ejecutar una funcion cada cierto tiempo en ms
+function activarCartel() {
+  setTimeout(() => {
+    const alert = document.querySelector(".alert");
+    alert.classList.remove("d-none");
+  }, 3000);
 }
 
 const btnOcultar = document.querySelector(".btn-danger");
 const btnEliminar = document.querySelectorAll(".btn-danger");
 const formTarea = document.getElementById("formTarea");
+const btnSetTimeout = document.getElementById("btnSetTimeout");
 
 //agregar un manejador de eventos
 btnOcultar.addEventListener("click", ocultarTexto);
@@ -58,3 +67,12 @@ btnOcultar.addEventListener("click", ocultarTexto);
 // btnOcultar.addEventListener('click', ()=> ocultarTexto('hola mundo'))
 btnEliminar[1].addEventListener("click", eliminarParrafo);
 formTarea.addEventListener("submit", crearTarea);
+btnSetTimeout.addEventListener("click", activarCartel);
+
+const hora = document.getElementById('reloj')
+setInterval( ()=>{
+  const fecha = new Date()
+  const segundos = (fecha.getSeconds() < 10) ? '0'+fecha.getSeconds() : fecha.getSeconds()
+  hora.innerHTML = `${fecha.getHours()} : ${fecha.getMinutes()} : ${segundos}`
+  // console.log(fecha)
+}, 1000)
