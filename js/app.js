@@ -25,18 +25,36 @@ const ocultarTexto = () => {
   }
 };
 
-const eliminarParrafo = ()=>{
-    const parrafo = document.getElementById('parrafo-eliminar');
-    parrafo.remove()
-    btnEliminar[1].classList.add('disabled')
-    // btnEliminar[1].className = 'btn btn-danger disabled'
+const eliminarParrafo = () => {
+  const parrafo = document.getElementById("parrafo-eliminar");
+  parrafo.remove();
+  btnEliminar[1].classList.add("disabled");
+  // btnEliminar[1].className = 'btn btn-danger disabled'
+};
+
+function crearTarea(e) {
+  e.preventDefault();
+  // acceder al valor del input del formulario
+  const tarea = document.getElementById("tarea").value;
+  //? opcion 1
+   const ul = document.querySelector(".list-group"); // nodo padre
+  // const item = document.createElement("li"); // <li> </li> // nodo hijo
+  // item.classList.add("list-group-item");
+  // item.textContent = tarea;
+  // ul.appendChild(item);
+  //?opcion 2
+  ul.innerHTML += `<li class="list-group-item">${tarea}</li>`
+  //resetear el formulario
+  formTarea.reset();
 }
 
 const btnOcultar = document.querySelector(".btn-danger");
 const btnEliminar = document.querySelectorAll(".btn-danger");
+const formTarea = document.getElementById("formTarea");
 
 //agregar un manejador de eventos
 btnOcultar.addEventListener("click", ocultarTexto);
 // si la funcion tiene parametros guardarla en un callback
 // btnOcultar.addEventListener('click', ()=> ocultarTexto('hola mundo'))
-btnEliminar[1].addEventListener('click', eliminarParrafo)
+btnEliminar[1].addEventListener("click", eliminarParrafo);
+formTarea.addEventListener("submit", crearTarea);
