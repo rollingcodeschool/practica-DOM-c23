@@ -56,10 +56,16 @@ function activarCartel() {
   }, 3000);
 }
 
+function detenerReloj(){
+  console.log('estoy en la funcion que detiene el reloj')
+  clearInterval(idInterval)
+}
+
 const btnOcultar = document.querySelector(".btn-danger");
 const btnEliminar = document.querySelectorAll(".btn-danger");
 const formTarea = document.getElementById("formTarea");
 const btnSetTimeout = document.getElementById("btnSetTimeout");
+const btnReloj = document.getElementById('btnReloj')
 
 //agregar un manejador de eventos
 btnOcultar.addEventListener("click", ocultarTexto);
@@ -68,11 +74,27 @@ btnOcultar.addEventListener("click", ocultarTexto);
 btnEliminar[1].addEventListener("click", eliminarParrafo);
 formTarea.addEventListener("submit", crearTarea);
 btnSetTimeout.addEventListener("click", activarCartel);
+btnReloj.addEventListener('click', detenerReloj)
 
 const hora = document.getElementById('reloj')
-setInterval( ()=>{
+const idInterval = setInterval( ()=>{
   const fecha = new Date()
   const segundos = (fecha.getSeconds() < 10) ? '0'+fecha.getSeconds() : fecha.getSeconds()
   hora.innerHTML = `${fecha.getHours()} : ${fecha.getMinutes()} : ${segundos}`
-  // console.log(fecha)
 }, 1000)
+
+// Como trabajar con la fecha
+const hoy  = new Date()
+console.log(hoy)
+console.log(hoy.getFullYear())
+console.log(hoy.getMonth())
+
+const configuracionFecha = {
+    weekday: "long", // 'long' (ej. "lunes"), 'short' (ej. "lun"), 'narrow' (ej. "L")
+    year: "numeric", //'numeric' (ej. "2023"), '2-digit' (ej. "23")
+    month: "long", // 'numeric' (ej. "1"), '2-digit' (ej. "01"), 'long' (ej. "enero"), 'short' (ej. "ene"), 'narrow' (ej. "E")
+    day: "numeric", //'numeric' (ej. "3"), '2-digit' (ej. "03")
+}
+
+console.log(hoy.toLocaleDateString(undefined, configuracionFecha))
+
